@@ -76,14 +76,30 @@ const products = [
 ];
 
 const productSection = document.querySelector(".products");
-for(let i=0;i<products.length;i++){
-  productSection.innerHTML += `<div class="product">
-  <img src="${products[i].image}" alt="${products[i].category}">
-  <h3>${products[i].name}</h3>
-  <p class="price">${products[i].price}</p>
-  <div class="btn-group">
-    <button class="btn-cart">Add to Cart</button>
-    <button class="btn-buy">Buy Now</button>
-  </div>
-</div>`;
+function renderProducts(list, container) {
+    for(let i = 0; i < list.length; i++) {
+        container.innerHTML += `<div class="product">
+            <img src="${list[i].image}" alt="${list[i].category}">
+            <h3>${list[i].name}</h3>
+            <p class="price">${list[i].price}</p>
+            <div class="btn-group">
+                <button class="btn-cart">Add to Cart</button>
+                <button class="btn-buy">Buy Now</button>
+            </div>
+        </div>`;
+    }
 }
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let t = array[i];
+        array[i] = array[j];
+        array[j] = t;
+    }
+    return array;
+}
+shuffle(products);
+const featuredProducts=products.slice(0,5);
+const featuredSection=document.querySelector(".featuredProducts");
+renderProducts(featuredProducts,featuredSection);
+renderProducts(products,productSection);
