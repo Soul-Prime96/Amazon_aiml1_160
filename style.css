@@ -113,7 +113,6 @@ header {
   color: #febd69;
   outline: 1px solid #555;
 }
-
 /* =====================
    SLIDESHOW
    ===================== */
@@ -370,4 +369,70 @@ header {
 
 .footer-copy p {
     margin: 5px 0;
+}
+
+/* =====================
+   Dark Mode
+   ===================== */
+   /* dark button */
+   #darkModeBtn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+#darkModeBtn:hover {
+    background-color: #37475a;
+}
+/* whole page */
+
+body.dark-mode {
+    background-color: #121212;
+    color: #fff8ee;
+}
+
+body.dark-mode .product {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+body.dark-mode header {
+    background-color: #000;
+}
+body.dark-mode .product h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .product .price {
+    color: #ff9900;
+}
+
+body.dark-mode .secondary-nav {
+    background-color: #1a1a1a;
+}
+body.dark-mode .featured-title {
+    color: #ffffff;
+}
+body.dark-mode .featuredProducts{
+  background-color: #171f2b;
+}
+body.dark-mode .products-title{
+  color:#ffffff;
+}
+body.dark-mode .footer-links {
+    background-color: #151629;
+    color: whitesmoke;
+}
+
+body.dark-mode .footer-copy {
+    background-color:#090a0c;
+}
+
+body.dark-mode .footer-column a {
+    color: #aaaaaa;
 }

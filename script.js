@@ -53,7 +53,7 @@ document.querySelectorAll(".btn-cart").forEach(function (btn) {
   });
 });
 
-// products adding
+// Featured and All Products
 const products = [
   { name: "HP Victus AMD Ryzen 7, 6GB RTX 4050, 16GB", price: "₹79,900", image: "https://m.media-amazon.com/images/I/71r2ySSfgBL._SY450_.jpg", category: "Laptops" },
   { name: "boAt Nirvana Zenith Pro (2025), 50dB Hybrid ANC, Spatial Audio", price: "₹2,999", image: "https://m.media-amazon.com/images/I/41QwSzPBJOL._SY300_SX300_QL70_FMwebp_.jpg", category: "Electronics" },
@@ -89,6 +89,7 @@ function renderProducts(list, container) {
         </div>`;
     }
 }
+
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -103,3 +104,13 @@ const featuredProducts=products.slice(0,5);
 const featuredSection=document.querySelector(".featuredProducts");
 renderProducts(featuredProducts,featuredSection);
 renderProducts(products,productSection);
+
+const darkBtn = document.querySelector("#darkModeBtn");
+darkBtn.addEventListener("click",function(){
+  document.body.classList.toggle("dark-mode");
+   if(document.body.classList.contains("dark-mode")) {
+        darkBtn.textContent = "☀️";
+    } else {
+        darkBtn.textContent = "🌙";
+    }
+});
