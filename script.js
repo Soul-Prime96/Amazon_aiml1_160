@@ -121,3 +121,28 @@ if(localStorage.getItem("theme") === "dark") {
     darkBtn.textContent = "☀️";
 }
 
+// searching feature
+const result=document.querySelector(".search-box input");
+result.addEventListener("input",function(){
+  const featuredproduct=document.querySelector(".featuredProducts");
+  const featuredtitle=document.querySelector(".featured-title");
+  if(result.value !== "") {
+    featuredtitle.style.display="none";
+    featuredproduct.style.display="none";
+} else {
+    featuredtitle.style.display="block";
+    featuredproduct.style.display="grid";
+}
+  const cards = document.querySelectorAll(".product");
+  for(let x=0;x<cards.length;x++){
+    if(cards[x].querySelector("h3").textContent.toLowerCase().includes(result.value.toLowerCase())){
+      console.log(result);
+      cards[x].style.display="block";
+    }
+    else{
+      console.log("try again");
+      cards[x].style.display="none";
+    }
+  }
+  
+});
