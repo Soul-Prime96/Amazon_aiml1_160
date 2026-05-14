@@ -1,5 +1,4 @@
 //   SLIDESHOW LOGIC
-
 let slideIndex = 0;
 let autoPlayTimer;
 
@@ -105,12 +104,20 @@ const featuredSection=document.querySelector(".featuredProducts");
 renderProducts(featuredProducts,featuredSection);
 renderProducts(products,productSection);
 
+// Dark Mode
 const darkBtn = document.querySelector("#darkModeBtn");
-darkBtn.addEventListener("click",function(){
-  document.body.classList.toggle("dark-mode");
-   if(document.body.classList.contains("dark-mode")) {
+darkBtn.addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+    if(document.body.classList.contains("dark-mode")) {
         darkBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
     } else {
         darkBtn.textContent = "🌙";
+        localStorage.removeItem("theme");
     }
 });
+if(localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    darkBtn.textContent = "☀️";
+}
+
