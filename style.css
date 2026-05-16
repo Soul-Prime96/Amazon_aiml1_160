@@ -301,6 +301,30 @@ header {
   background-color: #e68a00;
 }
 
+
+
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    background-color: #0011ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 999;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#back-to-top:hover {
+    background-color: #e68a00;
+    transform: translateY(-3px);
+}
+
 /* =====================
    FOOTER
    ===================== */
@@ -423,6 +447,10 @@ body.dark-mode .featuredProducts{
 }
 body.dark-mode .products-title{
   color:#ffffff;
+}
+body.dark-mode #back-to-top {
+    background-color: #ff0000;
+    color: #111;
 }
 body.dark-mode .footer-links {
     background-color: #151629;

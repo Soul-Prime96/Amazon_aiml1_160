@@ -150,3 +150,16 @@ if(localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-mode");
     darkBtn.textContent = "☀️";
 }
+
+//Scroll to Top button
+const backToTopBtn=document.querySelector("#back-to-top");
+window.addEventListener("scroll", function() {
+    if(window.scrollY > 400) {
+        backToTopBtn.style.display="block";
+    } else {
+        backToTopBtn.style.display="none"
+    }
+    backToTopBtn.addEventListener("click", function() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+});
+});
