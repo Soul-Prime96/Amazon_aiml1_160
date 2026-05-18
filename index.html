@@ -8,7 +8,7 @@
 </head>
 <body>
 
-                                <!-- HEADER -->
+<!-- HEADER -->
   <header>
     <div class="logo">
       <a href="#" onclick="location.reload()">
@@ -32,21 +32,21 @@
     </nav>
   </header>
 
-                             <!-- SECONDARY NAV -->
-  <nav class="secondary-nav">
-    <ul>
-      <li><a href="#">☰ All</a></li>
-      <li><a href="#">Best Sellers</a></li>
-      <li><a href="#">Mobiles</a></li>
-      <li><a href="#">Fashion</a></li>
-      <li><a href="#">Electronics</a></li>
-      <li><a href="#">Prime</a></li>
-      <li><a href="#">Amazon Pay</a></li>
-      <li><a href="#">Customer Service</a></li>
-    </ul>
-  </nav>
+<!-- SECONDARY NAV -->
+<nav class="secondary-nav">
+  <ul>
+    <li><a href="#" onclick="filterCategory('All')">☰ All</a></li>
+    <li><a href="#" onclick="filterCategory('Laptops')">Laptops</a></li>
+    <li><a href="#" onclick="filterCategory('Mobiles')">Mobiles</a></li>
+    <li><a href="#" onclick="filterCategory('Electronics')">Electronics</a></li>
+    <li><a href="#" onclick="filterCategory('Fashion')">Fashion</a></li>
+    <li><a href="#" onclick="filterCategory('Appliances')">Appliances</a></li>
+    <li><a href="#" onclick="filterCategory('Toys')">Toys</a></li>
+    <li><a href="#" onclick="filterCategory('Automotive')">Automotive</a></li>
+  </ul>
+</nav>
 
-                          <!-- SLIDESHOW -->
+<!-- SLIDESHOW -->
   <div class="slideshow-container">
     <div class="slide"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop" alt="Slide 1"></div>
     <div class="slide"><img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1600&auto=format&fit=crop" alt="Slide 2"></div>
@@ -64,20 +64,21 @@
     </div>
   </div>
 
-  <!-- FEATURED SECTION -->
+<!-- FEATURED SECTION -->
 <h2 class="featured-title">⭐ Featured Today</h2>
 <section class="featuredProducts"></section>
 
-                          <!-- PRODUCTS -->
+<!-- PRODUCTS -->
   <h2 class="products-title">All Products on website</h2>
   <section class="products"></section>
+  <p id="noResults">No results found 😕</p>
 
 
-
+<!-- Back to Top Button -->
 <button id="back-to-top">↑ Top</button>
 
   
-                  <!-- FOOTER -->
+<!-- FOOTER -->
 <footer class="amazon-footer">
     <div class="footer-links">
 

@@ -67,7 +67,7 @@ header {
 .top-nav ul li a {
   text-decoration: none;
   color: white;
-  font-size: 13px;
+  font-size: 18px;
   padding: 6px 10px;
   border-radius: 4px;
   display: block;
@@ -301,6 +301,15 @@ header {
   background-color: #e68a00;
 }
 
+#noResults{
+  display:none;
+  text-align: center;
+  color: black;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 3px;
+}
+
 
 
 #back-to-top {
@@ -406,7 +415,7 @@ header {
     border-radius: 20px;
     padding: 10px 10px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 18px;
     transition: 0.2s;
 }
 
@@ -464,3 +473,27 @@ body.dark-mode .footer-copy {
 body.dark-mode .footer-column a {
     color: #aaaaaa;
 }
+body.dark-mode #noResults{
+  color: white;
+}
+
+
+
+
+
+/* Extras */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #febd69;
+    border-radius: 4px;
+}
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+
