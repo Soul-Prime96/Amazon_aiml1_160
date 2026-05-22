@@ -1,0 +1,253 @@
+/* =====================
+   GLOBAL RESET
+   ===================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+}
+
+/* =====================
+   HEADER
+   ===================== */
+header {
+    display: grid;
+    grid-template-columns: 160px 1fr auto;
+    align-items: center;
+    background-color: #07080a;
+    color: white;
+    padding: 8px 15px;
+    gap: 25px;
+}
+
+.logo img {
+    height: 40px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.search-box {
+    display: flex;
+    width: 100%;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-box button {
+    padding: 9px 15px;
+    border: none;
+    background-color: #febd69;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    font-size: 15px;
+}
+
+.top-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+}
+
+.top-nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    display: block;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.top-nav ul li a:hover {
+    color: #febd69;
+    background-color: #37475a;
+}
+
+/* =====================
+   PRODUCT DETAIL
+   ===================== */
+.product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* LEFT — IMAGE */
+.product-image {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.product-image img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* RIGHT — INFO */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-info h1 {
+    font-size: 22px;
+    color: #111;
+    line-height: 1.4;
+}
+
+.rating {
+    font-size: 14px;
+    color: #007185;
+}
+
+.rating span {
+    color: #555;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+.prod-price {
+    font-size: 28px;
+    color: #b12704;
+    font-weight: bold;
+}
+
+.in-stock {
+    font-size: 14px;
+    color: #007600;
+}
+
+.prod-desc {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* BADGES */
+.prod-badges {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.prod-badges span {
+    font-size: 13px;
+    color: #007185;
+    background-color: #f0f9ff;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid #b0dce8;
+}
+
+/* BUTTONS */
+.prod-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+}
+
+.btn-cart-large,
+.btn-buy-large {
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-cart-large {
+    background-color: #febd69;
+    color: #111;
+}
+
+.btn-cart-large:hover {
+    background-color: #f3a847;
+}
+
+.btn-buy-large {
+    background-color: #ff9900;
+    color: white;
+}
+
+.btn-buy-large:hover {
+    background-color: #e68a00;
+}
+
+.sold-by {
+    font-size: 13px;
+    color: #555;
+}
+
+/* =====================
+   DARK MODE
+   ===================== */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode .product-detail {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .product-image {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .product-info h1 {
+    color: #ffffff;
+}
+
+body.dark-mode .prod-desc {
+    color: #cccccc;
+}
+
+body.dark-mode .prod-price {
+    color: #ff9900;
+}
+
+body.dark-mode hr {
+    border-top: 1px solid #333;
+}
+
+body.dark-mode .prod-badges span {
+    background-color: #1a2a2a;
+    border-color: #2a4a4a;
+    color: #4db8cc;
+}
+
+body.dark-mode header {
+    background-color: #000;
+}
