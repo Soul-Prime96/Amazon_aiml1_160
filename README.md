@@ -89,3 +89,6 @@ In the final phase, we completed the project by adding proper comments, improvin
 - Initial project structure referenced from a peer's codebase
 - AI assistance used for debugging and guidance (Claude by Anthropic)
 - All feature logic, implementation and creative decisions by myself
+
+#Images
+<img width="1919" height="878" alt="Screenshot 2026-05-23 203253" src="https://github.com/user-attachments/assets/8a18f0be-419b-4dff-ba92-9d1a91d977ed" />
