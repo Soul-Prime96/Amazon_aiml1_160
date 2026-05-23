@@ -1,5 +1,7 @@
 /* =====================
    GLOBAL RESET
+   Removes default browser margin/padding from all elements
+   box-sizing: border-box makes padding included in width calculations
    ===================== */
 * {
     box-sizing: border-box;
@@ -14,6 +16,7 @@ body {
 
 /* =====================
    HEADER
+   Same grid layout as index.html: logo | search | nav
    ===================== */
 header {
     display: grid;
@@ -31,16 +34,17 @@ header {
     margin-top: 5px;
 }
 
+/* Search box stretches to fill available space using flexbox */
 .search-box {
     display: flex;
     width: 100%;
 }
 
 .search-box input {
-    flex: 1;
+    flex: 1; /* takes all available space */
     padding: 9px 12px;
     border: none;
-    border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px; /* rounded on left side only */
     outline: none;
     font-size: 14px;
 }
@@ -50,7 +54,7 @@ header {
     border: none;
     background-color: #febd69;
     cursor: pointer;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0; /* rounded on right side only */
     font-size: 15px;
 }
 
@@ -77,26 +81,28 @@ header {
 }
 
 /* =====================
-   PRODUCT DETAIL
+   PRODUCT DETAIL LAYOUT
+   Two column grid: image on left (1fr), info on right (1.5fr)
+   Centered on page with max-width so it doesn't stretch too wide
    ===================== */
 .product-detail {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1.5fr; /* info column slightly wider than image */
     gap: 40px;
     max-width: 1100px;
-    margin: 40px auto;
+    margin: 40px auto; /* centers the card horizontally */
     background: white;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* LEFT — IMAGE */
+/* LEFT COLUMN — Product image container */
 .product-image {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* light grey background behind image */
     border-radius: 10px;
     padding: 20px;
 }
@@ -104,14 +110,14 @@ header {
 .product-image img {
     width: 100%;
     max-height: 400px;
-    object-fit: contain;
+    object-fit: contain; /* shows full image without cropping */
 }
 
-/* RIGHT — INFO */
+/* RIGHT COLUMN — Product info stacked vertically */
 .product-info {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px; /* consistent spacing between all info elements */
 }
 
 .product-info h1 {
@@ -122,18 +128,20 @@ header {
 
 .rating {
     font-size: 14px;
-    color: #007185;
+    color: #007185; /* Amazon teal color for ratings */
 }
 
 .rating span {
     color: #555;
 }
 
+/* Divider line between sections */
 hr {
     border: none;
     border-top: 1px solid #e0e0e0;
 }
 
+/* Price in Amazon red */
 .prod-price {
     font-size: 28px;
     color: #b12704;
@@ -142,16 +150,20 @@ hr {
 
 .in-stock {
     font-size: 14px;
-    color: #007600;
+    color: #007600; /* green for in stock */
 }
 
 .prod-desc {
     font-size: 15px;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.6; /* comfortable reading line height */
 }
 
-/* BADGES */
+/* =====================
+   TRUST BADGES
+   Horizontal row of delivery/returns/warranty badges
+   flex-wrap allows them to stack on smaller screens
+   ===================== */
 .prod-badges {
     display: flex;
     gap: 20px;
@@ -163,14 +175,17 @@ hr {
     color: #007185;
     background-color: #f0f9ff;
     padding: 8px 14px;
-    border-radius: 20px;
+    border-radius: 20px; /* pill shape */
     border: 1px solid #b0dce8;
 }
 
-/* BUTTONS */
+/* =====================
+   ACTION BUTTONS
+   Stacked vertically with max-width so they don't stretch full width
+   ===================== */
 .prod-buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* stacks Add to Cart above Buy Now */
     gap: 10px;
     max-width: 300px;
 }
@@ -179,7 +194,7 @@ hr {
 .btn-buy-large {
     padding: 12px;
     border: none;
-    border-radius: 25px;
+    border-radius: 25px; /* pill shape */
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
@@ -211,6 +226,8 @@ hr {
 
 /* =====================
    DARK MODE
+   Overrides light colors when body.dark-mode class is active
+   Applied by localStorage preference saved on index.html
    ===================== */
 body.dark-mode {
     background-color: #121212;
@@ -226,6 +243,7 @@ body.dark-mode .product-image {
     background-color: #2a2a2a;
 }
 
+/* Explicit override needed since h1 has its own color defined */
 body.dark-mode .product-info h1 {
     color: #ffffff;
 }
@@ -234,6 +252,7 @@ body.dark-mode .prod-desc {
     color: #cccccc;
 }
 
+/* Price changes to orange in dark mode since red is hard to read on dark */
 body.dark-mode .prod-price {
     color: #ff9900;
 }

@@ -1,7 +1,9 @@
 /* =====================
    GLOBAL RESET
+   Removes default browser margin/padding from all elements
+   box-sizing: border-box makes padding included in width calculations
    ===================== */
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -14,6 +16,7 @@ body {
 
 /* =====================
    HEADER
+   CSS Grid with 3 columns: logo | search box | nav
    ===================== */
 header {
   display: grid;
@@ -31,16 +34,17 @@ header {
   margin-top: 5px;
 }
 
+/* Search box uses flexbox so input stretches and button stays fixed width */
 .search-box {
   display: flex;
   width: 100%;
 }
 
 .search-box input {
-  flex: 1;
+  flex: 1; /* takes all available space */
   padding: 9px 12px;
   border: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px; /* rounded only on left side */
   outline: none;
   font-size: 14px;
 }
@@ -50,7 +54,7 @@ header {
   border: none;
   background-color: #febd69;
   cursor: pointer;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0; /* rounded only on right side */
   font-size: 15px;
 }
 
@@ -58,6 +62,7 @@ header {
   background-color: #f3a847;
 }
 
+/* Top nav links displayed horizontally using flexbox */
 .top-nav ul {
   list-style: none;
   display: flex;
@@ -73,7 +78,7 @@ header {
   display: block;
   line-height: 1.4;
   transition: 0.2s;
-  white-space: nowrap;
+  white-space: nowrap; /* prevents text wrapping */
 }
 
 .top-nav ul li a:hover {
@@ -83,6 +88,8 @@ header {
 
 /* =====================
    SECONDARY NAV
+   Category filter bar below header
+   overflow-x: auto allows horizontal scroll on small screens
    ===================== */
 .secondary-nav {
   background-color: #232f3e;
@@ -91,11 +98,11 @@ header {
 
 .secondary-nav ul {
   list-style: none;
-  display: flex;
+  display: flex; /* horizontal layout */
   align-items: center;
   gap: 0;
   height: 40px;
-  overflow-x: auto;
+  overflow-x: auto; /* scroll if too many items */
 }
 
 .secondary-nav ul li a {
@@ -113,11 +120,14 @@ header {
   color: #febd69;
   outline: 1px solid #555;
 }
+
 /* =====================
    SLIDESHOW
+   All slides stacked on top of each other using position: absolute
+   Only the .active slide has opacity: 1, rest are invisible
    ===================== */
 .slideshow-container {
-  position: relative;
+  position: relative; /* needed so absolute children position correctly */
   max-width: 100%;
   height: 300px;
   overflow: hidden;
@@ -125,40 +135,41 @@ header {
 }
 
 .slide {
-  position: absolute;
+  position: absolute; /* all slides occupy same space */
   top: 0;
   left: 0;
   width: 100%;
   height: 300px;
-  opacity: 0;
-  transition: opacity 0.6s ease-in-out;
+  opacity: 0; /* hidden by default */
+  transition: opacity 0.6s ease-in-out; /* smooth fade between slides */
 }
 
 .slide.active {
-  opacity: 1;
+  opacity: 1; /* JS adds this class to show current slide */
   z-index: 1;
 }
 
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* fills container without stretching */
 }
 
+/* Prev/Next buttons positioned absolutely over the slideshow */
 .prev,
 .next {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%); /* vertically centers the button */
   padding: 12px 16px;
   color: white;
   font-weight: bold;
   font-size: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
-  user-select: none;
-  z-index: 2;
+  user-select: none; /* prevents text selection on click */
+  z-index: 2; /* above slides */
   transition: background-color 0.2s;
 }
 
@@ -170,11 +181,12 @@ header {
 .prev { left: 12px; }
 .next { right: 12px; }
 
+/* Dot indicators centered at bottom of slideshow */
 .slide-dots {
   position: absolute;
   bottom: 12px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* horizontally centers the dots */
   display: flex;
   gap: 8px;
   z-index: 2;
@@ -184,42 +196,47 @@ header {
   width: 10px;
   height: 10px;
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
+  border-radius: 50%; /* makes it a circle */
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .dot.active {
-  background-color: white;
+  background-color: white; /* JS adds this class to highlight current dot */
 }
 
 /* =====================
-   FEATURED PRODUCT
+   FEATURED PRODUCTS SECTION
+   Warm background to visually distinguish from main grid
+   JS renders 5 random products here on every page load
    ===================== */
 .featured-title {
-    padding: 20px 20px 0px 20px;
-    color: #111;
-    font-size: 22px;
+  padding: 20px 20px 0px 20px;
+  color: #111;
+  font-size: 22px;
 }
 
 .featuredProducts {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 20px;
-    padding: 15px 20px 25px 20px;
-    background-color: #fff8ee;
-    border-bottom: 3px solid #febd69;
-    margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); /* responsive columns */
+  gap: 20px;
+  padding: 15px 20px 25px 20px;
+  background-color: #fff8ee; /* warm yellow tint to stand out */
+  border-bottom: 3px solid #febd69;
+  margin-bottom: 10px;
 }
 
 /* =====================
    PRODUCTS GRID
+   Same grid layout as featured section
+   JS renders all 18 products here dynamically
    ===================== */
 .products-title {
-    padding: 20px 20px 0px 20px;
-    color: #111;
-    font-size: 22px;
+  padding: 20px 20px 0px 20px;
+  color: #111;
+  font-size: 22px;
 }
+
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -227,6 +244,7 @@ header {
   padding: 25px 20px;
 }
 
+/* Individual product card */
 .product {
   background: white;
   padding: 15px;
@@ -234,10 +252,12 @@ header {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* stacks image, name, price, buttons vertically */
   transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer; /* shows hand cursor since card is clickable */
 }
 
+/* Hover lift effect */
 .product:hover {
   box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
   transform: translateY(-3px);
@@ -246,25 +266,26 @@ header {
 .product img {
   width: 100%;
   height: 160px;
-  object-fit: contain;
+  object-fit: contain; /* shows full image without cropping */
   margin-bottom: 10px;
 }
 
 .product h3 {
   font-size: 14px;
   margin: 8px 0;
-  flex: 1;
+  flex: 1; /* pushes price and buttons to bottom of card */
   line-height: 1.4;
   color: #111;
 }
 
 .product .price {
-  color: #b12704;
+  color: #b12704; /* Amazon red price color */
   font-weight: bold;
   font-size: 16px;
   margin: 8px 0;
 }
 
+/* Button group inside each product card */
 .btn-group {
   display: flex;
   gap: 8px;
@@ -273,10 +294,10 @@ header {
 
 .btn-cart,
 .btn-buy {
-  flex: 1;
+  flex: 1; /* both buttons share equal width */
   padding: 8px 6px;
   border: none;
-  border-radius: 20px;
+  border-radius: 20px; /* pill shape */
   cursor: pointer;
   font-size: 12px;
   font-weight: bold;
@@ -301,8 +322,9 @@ header {
   background-color: #e68a00;
 }
 
-#noResults{
-  display:none;
+/* No results message: hidden by default, shown by JS when search returns 0 matches */
+#noResults {
+  display: none;
   text-align: center;
   color: black;
   font-size: 35px;
@@ -310,190 +332,188 @@ header {
   padding: 3px;
 }
 
-
-
+/* =====================
+   SCROLL TO TOP BUTTON
+   Fixed position so it stays on screen while scrolling
+   Hidden by default, JS shows it after 400px scroll
+   ===================== */
 #back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: none;
-    background-color: #0011ff;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 999;
-    transition: background-color 0.2s, transform 0.2s;
+  position: fixed; /* stays in same screen position regardless of scroll */
+  bottom: 30px;
+  right: 30px;
+  display: none; /* hidden by default */
+  background-color: #0011ff;
+  color: white;
+  border: none;
+  border-radius: 50%; /* circle shape */
+  width: 55px;
+  height: 55px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 999; /* above everything else */
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 #back-to-top:hover {
-    background-color: #e68a00;
-    transform: translateY(-3px);
+  background-color: #e68a00;
+  transform: translateY(-3px); /* slight lift on hover */
 }
 
 /* =====================
    FOOTER
+   Three column layout using flexbox
    ===================== */
-
 .amazon-footer {
-    margin-top: 40px;
-    font-family: Arial, sans-serif;
-}
-
-.footer-top {
-    background-color: #37475a;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.footer-top:hover {
-    background-color: #485769;
+  margin-top: 40px;
+  font-family: Arial, sans-serif;
 }
 
 .footer-links {
-    background-color: #232f3e;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    padding: 40px 20px;
-    flex-wrap: wrap;
+  background-color: #232f3e;
+  color: white;
+  display: flex;
+  justify-content: space-around; /* evenly spaces the 3 columns */
+  padding: 40px 20px;
+  flex-wrap: wrap; /* columns wrap on smaller screens */
 }
 
 .footer-column {
-    display: flex;
-    flex-direction: column;
-    margin: 15px;
+  display: flex;
+  flex-direction: column; /* stacks links vertically */
+  margin: 15px;
 }
 
 .footer-column h3 {
-    margin-bottom: 15px;
-    font-size: 16px;
+  margin-bottom: 15px;
+  font-size: 16px;
 }
 
 .footer-column a {
-    color: #dddddd;
-    text-decoration: none;
-    margin-bottom: 10px;
-    font-size: 14px;
+  color: #dddddd;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .footer-column a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-.footer-options button:hover {
-    border-color: white;
-}
-
-/* Copyright */
+/* Copyright bar at very bottom */
 .footer-copy {
-    background-color: #131a22;
-    color: #dddddd;
-    text-align: center;
-    padding: 20px;
-    font-size: 12px;
+  background-color: #131a22;
+  color: #dddddd;
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
 }
 
 .footer-copy p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 /* =====================
-   Dark Mode
+   DARK MODE
+   body.dark-mode class toggled by JS on button click
+   localStorage remembers preference after page refresh
    ===================== */
-   /* dark button */
-   #darkModeBtn {
-    background: transparent;
-    border: 1px solid white;
-    color: white;
-    border-radius: 20px;
-    padding: 10px 10px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: 0.2s;
+
+/* Dark mode toggle button in header */
+#darkModeBtn {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s;
 }
 
 #darkModeBtn:hover {
-    background-color: #37475a;
+  background-color: #37475a;
 }
-/* whole page */
 
+/* Dark mode overrides — each selector overrides the default light colors */
 body.dark-mode {
-    background-color: #000000;
-    color: #fff8ee;
+  background-color: #000000;
+  color: #fff8ee;
 }
 
 body.dark-mode .product {
-    background-color: #1e1e1e;
-    color: white;
-}
-
-body.dark-mode header {
-    background-color: #000;
-}
-body.dark-mode .product h3 {
-    color: #ffffff;
-}
-
-body.dark-mode .product .price {
-    color: #ff9900;
-}
-
-body.dark-mode .secondary-nav {
-    background-color: #1a1a1a;
-}
-body.dark-mode .featured-title {
-    color: #ffffff;
-}
-body.dark-mode .featuredProducts{
-  background-color: #171f2b;
-}
-body.dark-mode .products-title{
-  color:#ffffff;
-}
-body.dark-mode #back-to-top {
-    background-color: #ff0000;
-    color: #111;
-}
-body.dark-mode .footer-links {
-    background-color: #151629;
-    color: whitesmoke;
-}
-
-body.dark-mode .footer-copy {
-    background-color:#090a0c;
-}
-
-body.dark-mode .footer-column a {
-    color: #aaaaaa;
-}
-body.dark-mode #noResults{
+  background-color: #1e1e1e;
   color: white;
 }
 
+body.dark-mode header {
+  background-color: #000;
+}
 
+/* Explicit overrides needed because .product h3 and .price have their own colors */
+body.dark-mode .product h3 {
+  color: #ffffff;
+}
 
+body.dark-mode .product .price {
+  color: #ff9900;
+}
 
+body.dark-mode .secondary-nav {
+  background-color: #1a1a1a;
+}
 
-/* Extras */
+body.dark-mode .featured-title {
+  color: #ffffff;
+}
+
+body.dark-mode .featuredProducts {
+  background-color: #171f2b;
+}
+
+body.dark-mode .products-title {
+  color: #ffffff;
+}
+
+body.dark-mode #back-to-top {
+  background-color: #ff0000;
+  color: #111;
+}
+
+body.dark-mode .footer-links {
+  background-color: #151629;
+  color: whitesmoke;
+}
+
+body.dark-mode .footer-copy {
+  background-color: #090a0c;
+}
+
+body.dark-mode .footer-column a {
+  color: #aaaaaa;
+}
+
+body.dark-mode #noResults {
+  color: white;
+}
+
+/* =====================
+   EXTRAS
+   Custom scrollbar styling for webkit browsers (Chrome, Edge, Safari)
+   ===================== */
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
+
+/* Amazon orange scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-    background: #febd69;
-    border-radius: 4px;
+  background: #febd69;
+  border-radius: 4px;
 }
+
 body.dark-mode ::-webkit-scrollbar-track {
-    background: #1e1e1e;
+  background: #1e1e1e;
 }
-
-

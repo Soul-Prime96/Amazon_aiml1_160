@@ -1,5 +1,8 @@
 // =====================
 // PRODUCTS DATA
+// Same array as script.js — duplicated here because product.html
+// is a separate page with no access to script.js
+// In a real app this would be fetched from a database/API
 // =====================
 const products = [
   { name: "HP Victus AMD Ryzen 7, 6GB RTX 4050, 16GB", price: "₹79,900", image: "https://m.media-amazon.com/images/I/71r2ySSfgBL._SY450_.jpg", category: "Laptops", description: "Powerful gaming laptop with AMD Ryzen 7 processor and dedicated RTX 4050 GPU. Perfect for gaming, video editing and heavy multitasking." },
@@ -22,13 +25,29 @@ const products = [
   { name: "Realme Neckband Pro Bluetooth Earphones with ENC", price: "₹1,299", image: "https://m.media-amazon.com/images/I/31K5oAhDs3L._SY300_SX300_QL70_FMwebp_.jpg", category: "Electronics", description: "Comfortable neckband earphones with environmental noise cancellation and fast charging. Up to 30 hours playback on single charge." }
 ];
 
-
+// =====================
+// URL PARAMETER READING
+// window.location.search gets the query string from the URL e.g. "?id=5"
+// URLSearchParams parses it into readable key-value pairs
+// params.get("id") extracts the value of the "id" parameter
+// =====================
 const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+const id = params.get("id"); // e.g. "5" as a string
+
+// Use id directly as array index to get the correct product object
+// Works because script.js passed the original products array index in the URL
 const product = products[id];
 
+// =====================
+// POPULATE PAGE
+// Sets each HTML element's content using the product object's properties
+// All these elements are empty by default in product.html
+// =====================
 document.querySelector("#prodName").textContent = product.name;
 document.querySelector("#prodPrice").textContent = product.price;
 document.querySelector("#prodImage").src = product.image;
 document.querySelector("#prodDescription").textContent = product.description;
+
+// Updates browser tab title to show the actual product name
+// Makes it look more professional and helps with browser history
 document.title = product.name;

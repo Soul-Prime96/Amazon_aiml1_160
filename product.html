@@ -4,57 +4,96 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Details</title>
+  <!-- Separate CSS file for product page styling -->
   <link rel="stylesheet" href="product.css">
 </head>
 <body>
 
+  <!-- =====================
+       HEADER
+       Logo links back to index.html instead of reloading
+       Simplified nav with just Back to Store and Cart
+       ===================== -->
   <header>
+
+    <!-- Logo click navigates back to main store page -->
     <div class="logo">
       <a href="index.html">
         <img src="https://www.pngall.com/wp-content/uploads/15/Amazon-Logo-White-Transparent.png" alt="Amazon Logo">
       </a>
     </div>
+
     <div class="search-box">
       <input type="text" placeholder="Search Amazon...">
       <button>🔍</button>
     </div>
+
     <nav class="top-nav">
       <ul>
+        <!-- Back button returns user to main product listing -->
         <li><a href="index.html">← Back to Store</a></li>
         <li><a href="#">🛒 Cart</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- PRODUCT DETAIL SECTION -->
+  <!-- =====================
+       PRODUCT DETAIL SECTION
+       Two column layout: image on left, info on right
+       All content is empty by default
+       product.js reads the id from the URL and fills these elements
+       ===================== -->
   <div class="product-detail">
 
+    <!-- LEFT COLUMN: Product image -->
+    <!-- src is empty — product.js sets it dynamically -->
     <div class="product-image">
       <img id="prodImage" src="" alt="Product Image">
     </div>
 
+    <!-- RIGHT COLUMN: Product information -->
     <div class="product-info">
+
+      <!-- Product name — filled by product.js -->
       <h1 id="prodName"></h1>
+
+      <!-- Static star rating for visual effect -->
       <div class="rating">⭐⭐⭐⭐☆ <span>2,453 ratings</span></div>
+
       <hr>
+
+      <!-- Product price — filled by product.js -->
       <h2 id="prodPrice" class="prod-price"></h2>
+
+      <!-- Static delivery info -->
       <p class="in-stock">✅ In Stock. FREE delivery <b>Tomorrow</b></p>
+
+      <!-- Product description — filled by product.js -->
       <p id="prodDescription" class="prod-desc"></p>
+
       <hr>
+
+      <!-- Static trust badges -->
       <div class="prod-badges">
         <span>🚚 Free Delivery</span>
         <span>🔄 30 Day Returns</span>
         <span>🛡️ 1 Year Warranty</span>
       </div>
+
+      <!-- Action buttons -->
       <div class="prod-buttons">
         <button class="btn-cart-large">Add to Cart</button>
         <button class="btn-buy-large">Buy Now</button>
       </div>
+
+      <!-- Static seller info -->
       <p class="sold-by">Ships from <b>MyMart</b> | Sold by <b>MyMart</b></p>
+
     </div>
 
   </div>
 
+  <!-- product.js linked at bottom so DOM is fully loaded before JS runs -->
   <script src="product.js"></script>
 </body>
 </html>
